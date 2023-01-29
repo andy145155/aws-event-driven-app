@@ -117,7 +117,7 @@ DATABASES = {
         'PORT': db_port,
         'OPTIONS': {
             'ssl': {
-                'ca': '/Users/andyhsu/Desktop/movie-app/.credentials/ap-southeast-1-bundle.pem',
+                'ca': '/workspaces/event-driven-app/.credentials/ap-southeast-1-bundle.pem',
             },
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             'charset': 'utf8mb4',
