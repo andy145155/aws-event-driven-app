@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'movie_storage.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-rds_secret_name = "movie-app-db-credentials"
+rds_secret_name = "event-driven-app-db-credentials"
 rds_region_name = 'ap-southeast-1'
 
 # Create a Secrets Manager client
@@ -95,8 +95,6 @@ secret = json.loads(secret_response['SecretString'])
 
 # Create rds client
 rds = boto3.client('rds', region_name=rds_region_name)
-print('connecting to {}'.format(secret['DB_HOST']))
-
 
 db_host = secret['DB_HOST']
 db_port = secret['DB_PORT']
