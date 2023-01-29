@@ -1,0 +1,59 @@
+service: movie-app
+
+frameworkVersion: "3"
+
+plugins:
+  - serverless-python-requirements
+  - serverless-plugin-warmup
+
+custom:
+  # serverless-plugin-warmup
+  warmup:
+    default:
+      payload:
+        source: warmup
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
+  # Environment variables
+  tf: ${file(../infrastructure/config.json)}
+  LAMBDA_SG_ID: ${self:custom.tf.lambda_security_group_id}
+  PRIVATE_SUBNET_A_ID: ${self:custom.tf.private_subnet_a_id}
+  PRIVATE_SUBNET_B_ID: ${self:custom.tf.private_subnet_b_id}
+  DEFAULT_LAMBDA_ROLE_ARN: ${self:custom.tf.lambda_iam_role_arn}
+  SQS_ARN: ${self:custom.tf.sqs_arn}
+
+provider:
+  name: aws
+  region: ap-southeast-1
+  runtime: python3.7
+  timeout: 30
+  iam:
+    role: ${self:custom.DEFAULT_LAMBDA_ROLE_ARN}
+  # If use VPC then both securityGroupIds and subnetIds are required
+  vpc:
+    securityGroupIds:
+      - ${self:custom.LAMBDA_SG_ID}
+    subnetIds:
+      - ${self:custom.PRIVATE_SUBNET_A_ID}
+      - ${self:custom.PRIVATE_SUBNET_B_ID}
+
+package:
+  patterns:
+    - "!node_modules/**"
+    - "!venv/**"
+
+functions:
+  addIamUserToDataBase:
+    handler: functions/addIamUserToDataBase.handler
+    warmup:
+      default:
+        enabled: true
+  csvToDatabase:
+    handler: functions/csvToDatabase.handler
+    warmup:
+      default:
+        enabled: true
+    events:
+      - sqs:
+          arn: ${self:custom.SQS_ARN}

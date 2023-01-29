@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "serverless": "^3.25.0"
+  },
+  "devDependencies": {
+    "serverless-plugin-warmup": "^8.2.1",
+    "serverless-python-requirements": "^6.0.0"
+  }
+}
