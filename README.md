@@ -10,9 +10,9 @@ This S3 event-driven app uses the principle of decoupling, least-privilege acces
 
 ## Run locally
 ### Prerequisites
-[AWS CLI Setup](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
-[VS Code Dev Containers Setup](https://code.visualstudio.com/docs/devcontainers/containers)
-[Setup IAM user](https://dev.to/aws-builders/creating-your-first-iam-admin-user-and-user-group-in-your-aws-account-machine-learning-part-1-3cne)
+* [AWS CLI Setup](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
+* [VS Code Dev Containers Setup](https://code.visualstudio.com/docs/devcontainers/containers)
+* [Setup IAM user](https://dev.to/aws-builders/creating-your-first-iam-admin-user-and-user-group-in-your-aws-account-machine-learning-part-1-3cne)
 
 ## Steps to go from starter to completed
 If you want to take the starter project and implement real-time functionality on your own to learn and get hands-on, here are some guidelines:
