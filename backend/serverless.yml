@@ -1,4 +1,4 @@
-service: movie-app
+service: event-driven-app
 
 frameworkVersion: "3"
 
