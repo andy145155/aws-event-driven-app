@@ -7,4 +7,6 @@ This S3 event-driven app uses the principle of decoupling, least-privilege acces
 </p>
 
 ## Prerequisites
-[AWS CLI Setup](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
+### [AWS CLI Setup](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
+### [VS Code Dev Containers Setup](https://code.visualstudio.com/docs/devcontainers/containers)
+### [Setup IAM user with AdministratorAccess](https://dev.to/aws-builders/creating-your-first-iam-admin-user-and-user-group-in-your-aws-account-machine-learning-part-1-3cne)
