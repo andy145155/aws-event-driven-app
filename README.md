@@ -1,6 +1,10 @@
 # S3 Event Driven app
 
-This S3 event-driven app uses the principle of decoupling, least-privilege access, and data encryption. There are three operations in this app. First of all, after building cloud resources from terraform, run addIamUserToDataBase lambda to create a new IAM user in the rds server. Once the IAM user account is set properly, the user can perform Django migrations to update tables in the rds. Lastly, to trigger the S3 event, upload the CSV file to the S3 bucket, the S3 bucket will notify the sqs queue with an event body that contains information about the CSV file, and csvToDataBase lambda will process the CSV and update the corresponding rds table. 
+This application operates under the principles of decoupling, least-privilege access, and data encryption, utilizing S3 events. The application is composed of three operations.
+
+First, cloud resources are built using terraform. Then, the addIamUserToDataBase lambda function is run to create a new IAM user in the RDS server. Once the IAM user account is properly configured, Django migrations can be performed to update tables in the RDS.
+
+To trigger the S3 event, simply upload a CSV file to the designated S3 bucket. Once uploaded, the S3 bucket will notify the SQS queue with an event body that contains information about the CSV file. The csvToDataBase lambda function will then process the CSV and update the corresponding RDS table accordingly.
 
 <p align="center"> 
   <img src="./assets/event-driven-app-diagram.png" />
